@@ -1,32 +1,36 @@
 #US Census
 
-###Vocabulary:
+###Goal:
 
--‘Not in universe’ means not concern by the census.\n
-Example: children won’t be ask if they have a job.\n
 
--The wage per hour is multiplied by 100.
-
--MSA:metropolitan statistical area (MSA) is a geographical region with a relatively high population density at its core and close economic ties throughout the area.
 
 ###Dataset:
 
--199523 training examples
--99762 testing examples
--41 features
+-199523 training examples<br />
+-99762 testing examples<br />
+-41 features<br />
+
+###Notes:
+
+-‘Not in universe’ means not concern by the census.<br />
+Example: children won’t be ask if they have a job.<br />
+
+-The wage per hour is multiplied by 100.<br />
+
+-MSA:metropolitan statistical area (MSA) is a geographical region with a relatively high population density at its core and close economic ties throughout the area.<br />
 
 ##1. First model:
 The columns with missing values are dropped:
 
--hispanic_origin
--state_of_previous_residence
--migration_codechange_in_msa
--migration_codechange_in_reg
--migration_codemove_within_reg
--migration_prev_res_in_sunbelt
--country_of_birth_father
--country_of_birth_mother
--country_of_birth_self
+- hispanic_origin
+- state_of_previous_residence
+- migration_codechange_in_msa
+- migration_codechange_in_reg
+- migration_codemove_within_reg
+- migration_prev_res_in_sunbelt
+- country_of_birth_father
+- country_of_birth_mother
+- country_of_birth_self
 
 So we used only columns with non missing values.
 There are 31 features.
@@ -75,32 +79,32 @@ If a person has one of these condition, he has hispanic origins:\n
 
 hispanic_countries=[‘Mexico','Puerto-Rico','Ecuador','Guatemala','Nicaragua','Guatemala','Nicaragua','Cuba','Dominican-Republic','El-Salvador’]\n
 
-*c1: hispanic_origin is equal to ['Central or South American','Mexican (Mexicano)','Mexican-American','Other Spanish','Puerto Rican','Cuban','Chicano’]\n
+* c1: hispanic_origin is equal to ['Central or South American','Mexican (Mexicano)','Mexican-American','Other Spanish','Puerto Rican','Cuban','Chicano’]\n
 
-*c2:Person is born in one of the hispanic countries \n
+* c2:Person is born in one of the hispanic countries \n
 
-*c3:Person’s father is born in one of the hispanic countries
+* c3:Person’s father is born in one of the hispanic countries
 
-*c4:Person’s mother is born in one of the hispanic countries
+* c4:Person’s mother is born in one of the hispanic countries
 
 Unfortunately it has no real effect on the classification accuracy: 0.9534 pct\n
 
 ##6. Create new features:
 
 When the weights of the logistic regression are displayed, we can see that the most important features are:
--education
--sex
--class of worker
--major_industry_code
--Householder
--industry_recode
--occupation_recode
+- education
+- sex
+- class of worker
+- major_industry_code
+- householder
+- industry_recode
+- occupation_recode
 
 But features that should be discriminant according to the chi2 test are practically useless:
--capital_gains
--dividends_from_stocks
--weeks_worked_in_year
--wage_per_hour
+- capital_gains
+- dividends_from_stocks
+- weeks_worked_in_year
+- wage_per_hour
 
 So we create two new features:
 gain_total=capital_gains - capital_losses + dividends_from_stocks
