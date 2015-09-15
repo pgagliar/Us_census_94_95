@@ -110,4 +110,30 @@ income=wage_per_hour*weeks_worked_in_year
 Unfortunately it has no real effect on the classification accuracy: 0.9537 pct<br />
 ‘income’ and ‘total_gain’ have coefficient in the logistic regression which are closed to 0
 
+###Places that have been challenging:
+
+- Finding a good strategy to complete missing values takes time. And sometimes it doesn’t pay.
+
+- The dataset is large so I’ve try to train some more complexe classifier on the dataset like SVM with linear and RBF kernel. But It takes a long time to train.
+
+-Also I’ve try to plot a learning curve to see if my model suffer from high bias or high variance. But it takes too long too.
+
+###Clear insights on the profiles of the people that make more than $50,000 / year:
+We can use the coefficient of the logistic regression to have some insights on the data:
+
+More than $50 000:
+- Education: Bachelor, Master, Phd
+- Married
+- Industry recode=13, 20, 26
+- Occupation recode=11, 21,7, 45
+- High number of working weeks
+
+Less than $50000:
+- Female
+- Education: Less than 1st grade, 5th or 6th grade, 9th grade
+- High school or College student
+- Industry recode: 10
+- Occupation recode: 31
+- Hispanic origins
+
 
