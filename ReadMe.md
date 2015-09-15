@@ -2,7 +2,7 @@
 
 ###Goal:
 
-
+Prediction task is to determine the income level for the person represented by the record.  Incomes have been binned at the $50K level to present a binary classification problem.
 
 ###Dataset:
 
@@ -17,7 +17,7 @@ Example: children won’t be ask if they have a job.
 
 - The wage per hour is multiplied by 100.
 
-- MSA:metropolitan statistical area (MSA) is a geographical region with a relatively high population density at its core and close economic ties throughout the area.
+- MSA: metropolitan statistical area (MSA) is a geographical region with a relatively high population density at its core and close economic ties throughout the area.
 
 ##1. First model:
 The columns with missing values are dropped:
@@ -32,13 +32,11 @@ The columns with missing values are dropped:
 - country_of_birth_mother
 - country_of_birth_self
 
-So we used only columns with non missing values.
-There are 31 features.
-
-Among those 31 features, the nominal features are one-hot-encoded and continuous feature stay the same way.
+In the end we used 31 features, with non missing values.<br />
+Among those 31 features, the nominal features are one-hot-encoded and continuous feature stay the same way.<br />
 We end up with 287 features.
 
-##2. We apply a Anova F-test on the 7 continuous features:<br />
+##2. We apply a Anova F-test on the 7 continuous features:
 Feature name , F-test score, p value<br />
 
 - (‘weeks_worked_in_year', 22099.531778511238, 0.0)
@@ -49,7 +47,7 @@ Feature name , F-test score, p value<br />
 - (‘capital_losses', 6651.2822134114776, 0.0)
 - (‘age', 5666.315940942015, 0.0)
 
-Their p-value=0 so those features are correlated with the target.
+The p-values of those features are 0 so they should be correlated with the target.
 
 ##3. We use a logistic regression to predict the target:
 
@@ -67,13 +65,16 @@ But here, it has no effect on the classification result.
 
 ##5. Complete missing value:
 
-We can try to add more feature to our model to lower, to lower the bias.
-So a new feature hispanic_simplified is created from hispanic_origin.
+Maybe our model is to simple so we can try to add more feature to our model.
+New feature hispanic_simplified is created from hispanic_origin.
 
-The process to create 'hispanic_simplified’:
-If a person has one of these condition, he has hispanic origins:
+The process to create 'hispanic_simplified’ is:<br />
 
-hispanic_countries=[‘Mexico','Puerto-Rico','Ecuador','Guatemala','Nicaragua','Guatemala','Nicaragua','Cuba','Dominican-Republic','El-Salvador’]
+If a person fills one of those conditions, he has hispanic origins:<br />
+
+First let’s define hispanic_countries as [‘Mexico','Puerto-Rico','Ecuador','Guatemala','Nicaragua','Guatemala','Nicaragua','Cuba','Dominican-Republic','El-Salvador’]
+
+Conditions:<br />
 
 * c1: hispanic_origin is equal to ['Central or South American','Mexican (Mexicano)','Mexican-American','Other Spanish','Puerto Rican','Cuban','Chicano’]
 
@@ -102,8 +103,8 @@ But features that should be discriminant according to the Anova test are practic
 - weeks_worked_in_year
 - wage_per_hour
 
-So we create two new features:
-total_gain=capital_gains - capital_losses + dividends_from_stocks
+So we create two new features:<br />
+total_gain=capital_gains - capital_losses + dividends_from_stocks<br />
 income=wage_per_hour*weeks_worked_in_year
 
 Unfortunately it has no real effect on the classification accuracy: 0.9537 pct<br />
