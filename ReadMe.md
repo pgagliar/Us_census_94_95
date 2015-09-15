@@ -2,7 +2,7 @@
 
 ###Goal:
 
-Prediction task is to determine the income level for the person represented by the record.  Incomes have been binned at the $50K level to present a binary classification problem.
+The prediction task is to determine the income level for the person represented by the record.  Incomes have been binned at the $50K level to present a binary classification problem.
 
 ###Dataset:
 
@@ -86,7 +86,7 @@ Conditions:<br />
 
 Unfortunately it has no real effect on the classification accuracy: 0.9534 pct
 
-##6. Create new features:
+##6. Create a new feature:
 
 When the weights of the logistic regression are displayed, we can see that the most important features are:
 - education
@@ -118,7 +118,7 @@ Unfortunately it has no real effect on the classification accuracy: 0.9537 pct<b
 
 -Also I’ve try to plot a learning curve to see if my model suffer from high bias or high variance. But it takes too long too.
 
-###Clear insights on the profiles of the people that make more than $50,000 / year:
+###Insights on the profiles of the people that make more than $50,000 / year:
 We can use the coefficient of the logistic regression to have some insights on the data:
 
 More than $50 000:
