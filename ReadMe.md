@@ -104,8 +104,8 @@ But features that should be discriminant according to the Anova test are practic
 - wage_per_hour
 
 So we create two new features:<br />
-total_gain=capital_gains - capital_losses + dividends_from_stocks<br />
-income=wage_per_hour*weeks_worked_in_year
+- total_gain=capital_gains - capital_losses + dividends_from_stocks<br />
+- income=wage_per_hour*weeks_worked_in_year
 
 Unfortunately it has no real effect on the classification accuracy: 0.9537 pct<br />
 ‘income’ and ‘total_gain’ have coefficient in the logistic regression which are closed to 0
@@ -116,7 +116,7 @@ Unfortunately it has no real effect on the classification accuracy: 0.9537 pct<b
 
 - The dataset is large so I’ve tried to train some more complexe classifiers on the dataset like SVM with linear kernel and RBF kernel. But It takes too much time.
 
--Also I’ve try to plot a learning curve to see if my model suffer from high bias or high variance. But it takes too long too.
+- Also I’ve try to plot a learning curve to see if my model suffer from high bias or high variance. But it takes too long too.
 
 ###Insights on the profiles of the people that make more than $50,000 / year:
 We can use the coefficient of the logistic regression to have some insights on the data:
