@@ -33,7 +33,7 @@ The columns with missing values are dropped:
 - country_of_birth_self
 
 In the end we used 31 features, with non missing values.<br />
-Among those 31 features, the nominal features are one-hot-encoded and continuous feature stay the same way.<br />
+Among those 31 features, the nominal features are one-hot-encoded and continuous features stay the same way.<br />
 We end up with 287 features.
 
 ##2. We apply a Anova F-test on the 7 continuous features:
@@ -66,7 +66,7 @@ But here, it has no effect on the classification result.
 ##5. Complete missing value:
 
 Maybe our model is to simple so we can try to add more feature to our model.
-New feature hispanic_simplified is created from hispanic_origin.
+A new feature, hispanic_simplified, is created from hispanic_origin.
 
 The process to create 'hispanic_simplified’ is:<br />
 
@@ -76,13 +76,13 @@ First let’s define hispanic_countries as [‘Mexico','Puerto-Rico','Ecuador','
 
 Conditions:<br />
 
-* c1: hispanic_origin is equal to ['Central or South American','Mexican (Mexicano)','Mexican-American','Other Spanish','Puerto Rican','Cuban','Chicano’]
+* c1: hispanic_origin is equal to one of those options ['Central or South American','Mexican (Mexicano)','Mexican-American','Other Spanish','Puerto Rican','Cuban','Chicano’]
 
-* c2:Person is born in one of the hispanic countries
+* c2: The person was born in one of the hispanic countries
 
-* c3:Person’s father is born in one of the hispanic countries
+* c3: The person’s father was born in one of the hispanic countries
 
-* c4:Person’s mother is born in one of the hispanic countries
+* c4:The person’s mother was born in one of the hispanic countries
 
 Unfortunately it has no real effect on the classification accuracy: 0.9534 pct
 
@@ -114,7 +114,7 @@ Unfortunately it has no real effect on the classification accuracy: 0.9537 pct<b
 
 - Finding a good strategy to complete missing values takes time. And sometimes it doesn’t pay.
 
-- The dataset is large so I’ve try to train some more complexe classifier on the dataset like SVM with linear and RBF kernel. But It takes a long time to train.
+- The dataset is large so I’ve tried to train some more complexe classifiers on the dataset like SVM with linear kernel and RBF kernel. But It takes too much time.
 
 -Also I’ve try to plot a learning curve to see if my model suffer from high bias or high variance. But it takes too long too.
 
